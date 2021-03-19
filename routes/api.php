@@ -20,3 +20,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('user', [UserRegController::class, 'store']);
+
+Route::group([
+    'prefix' =>'auth'
+], function() {
+    Route::post('/login','AuthController@login');
+});
+
+
+
+
+
