@@ -10,6 +10,7 @@ class ElectionOrganizerController extends Controller
     public function store(Request $request)
     {
         $Electionorgs = new ElectionOrganizer();
+        $Electionorgs->user_reg_id = $request->input('user_reg_id');
         $Electionorgs->election_name = $request->input('election_name');
         $Electionorgs->status = $request->input('status');
         $Electionorgs->start_date = $request->input('start_date');

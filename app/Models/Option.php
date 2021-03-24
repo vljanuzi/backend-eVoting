@@ -10,7 +10,7 @@ class Option extends Model
 {
     use HasFactory;
 
-    public function option()
+    public function options()
     {
         return $this->belongsTo(Question::class, 'question_id');
     }

@@ -11,6 +11,7 @@ class ElectorController extends Controller
     {
         $Elector = new Elector();
         $Elector->election_id = $request->input('election_id');
+        $Elector->user_reg_id = $request->input('user_reg_id');
         $Elector->name = $request->input('name');
         $Elector->email = $request->input('email');
         $Elector->joined_at = $request->input('joined_at');
