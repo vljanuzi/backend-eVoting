@@ -11,11 +11,11 @@ class Question extends Model
 {
     use HasFactory;
 
-    public function election()
+    public function elections()
     {
         return $this->belongsTo(Election::class, 'election_id');
     }
-    public function option()
+    public function options()
     {
         return $this->hasMany(Option::class, 'question_id');
     }

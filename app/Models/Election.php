@@ -13,17 +13,17 @@ class Election extends Model
 {
     use HasFactory;
 
-    public function electionorganizer()
+    public function electionorganizers()
     {
         return $this->belongsTo(ElectionOrganizer::class, 'elect_org_id');
     }
 
-    public function elector()
+    public function electors()
     {
         return $this->hasMany(Elector::class, 'election_id');
     }
 
-    public function question()
+    public function questions()
     {
         return $this->hasMany(Question::class, 'election_id');
     }
