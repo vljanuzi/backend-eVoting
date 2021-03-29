@@ -11,6 +11,12 @@ use App\Models\Elector;
 
 class Election extends Model
 {
+    protected $fillable = [
+        'elect_org_id',
+        'name'
+    ];
+
+
     use HasFactory;
 
     public function electionorganizers()

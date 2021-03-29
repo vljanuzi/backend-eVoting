@@ -5,9 +5,9 @@ use App\Http\Controllers\ElectionOrganizerController;
 use App\Http\Controllers\ElectorController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\RegisteredUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserRegController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,9 +35,9 @@ Route::group([
 
 
 
-Route::post('user', [UserRegController::class, 'store'])->middleware('cors');
-Route::post('election_organizer', [ElectionOrganizerController::class, 'store']);
-Route::post('election', [ElectionController::class, 'store']);
-Route::post('elector', [ElectorController::class, 'store']);
-Route::post('option', [OptionController::class, 'store']);
-Route::post('question', [QuestionController::class, 'store']);
+Route::resource('registeredusers', RegisteredUserController::class)->middleware('cors');
+Route::resource('electionorganizers', ElectionOrganizerController::class)->middleware('cors');
+Route::resource('elections', ElectionController::class)->middleware('cors');
+Route::resource('electors', ElectorController::class)->middleware('cors');
+Route::resource('options', OptionController::class)->middleware('cors');
+Route::resource('questions', QuestionController::class)->middleware('cors');

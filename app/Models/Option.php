@@ -8,6 +8,12 @@ use App\Models\Question;
 
 class Option extends Model
 {
+    protected $fillable = [
+        'question_id',
+        'name',
+        'type',
+    ];
+
     use HasFactory;
 
     public function options()

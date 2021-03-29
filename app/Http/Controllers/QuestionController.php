@@ -2,21 +2,65 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Question;
 use Illuminate\Http\Request;
+use App\Models\Question;
 
 class QuestionController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return Question::all();
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        $Question = new Question();
-        $Question->election_id = $request->input('election_id');
-        $Question->title = $request->input('title');
-        $Question->image = $request->input('image');
-        $Question->type = $request->input('type');
-        $Question->allow_abstain = $request->input('allow_abstain');
-        $Question->has_instructions = $request->input('has_instructions');
-        $Question->save();
-        return response()->json(['message' => 'Question registered successfully'], 200);
+        return Question::create($request->all());
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        return Question::find($id);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $question = Question::find($id);
+        $question->update($request->all());
+        return $question;
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        return Question::destroy($id);
     }
 }

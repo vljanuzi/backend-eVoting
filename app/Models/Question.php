@@ -9,6 +9,16 @@ use App\Models\Option;
 
 class Question extends Model
 {
+    protected $fillable = [
+        'election_id',
+        'title',
+        'image',
+        'type',
+        'allow_abstain',
+        'has_instructions'
+    ];
+
+
     use HasFactory;
 
     public function elections()

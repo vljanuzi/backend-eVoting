@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserRegsTable extends Migration
+class CreateRegisteredUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUserRegsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_regs', function (Blueprint $table) {
+        Schema::create('registered_users', function (Blueprint $table) {
             $table->id();
             $table->string('f_name');
             $table->string('l_name');
@@ -34,6 +34,6 @@ class CreateUserRegsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_regs');
+        Schema::dropIfExists('registered_users');
     }
 }

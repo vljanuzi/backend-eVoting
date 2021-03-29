@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RegisteredUser;
 use Illuminate\Http\Request;
-use App\Models\Option;
 
-class OptionController extends Controller
+class RegisteredUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class OptionController extends Controller
      */
     public function index()
     {
-        return Option::all();
+        return RegisteredUser::all();
     }
 
     /**
@@ -25,7 +25,7 @@ class OptionController extends Controller
      */
     public function store(Request $request)
     {
-        return Option::create($request->all());
+        return RegisteredUser::create($request->all());
     }
 
     /**
@@ -36,7 +36,7 @@ class OptionController extends Controller
      */
     public function show($id)
     {
-        return Option::find($id);
+        return RegisteredUser::find($id);
     }
 
     /**
@@ -48,9 +48,9 @@ class OptionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $option = Option::find($id);
-        $option->update($request->all());
-        return $option;
+        $reg_user = RegisteredUser::find($id);
+        $reg_user->update($request->all());
+        return $reg_user;
     }
 
     /**
@@ -61,6 +61,6 @@ class OptionController extends Controller
      */
     public function destroy($id)
     {
-        return Option::destroy($id);
+        return RegisteredUser::destroy($id);
     }
 }

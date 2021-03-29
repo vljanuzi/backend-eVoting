@@ -6,10 +6,28 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ElectionOrganizer;
 use App\Models\Elector;
+use Illuminate\Support\Facades\Hash;
 
-class user_reg extends Model
+class RegisteredUser extends Model
 {
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = Hash::make($password);
+    }
+
+    protected $fillable = [
+        'f_name',
+        'l_name',
+        'email',
+        'password',
+        'gender',
+        'birthday',
+        'user_privilege',
+        'role'
+    ];
+
     use HasFactory;
+
 
     public function electionorganizers()
     {
