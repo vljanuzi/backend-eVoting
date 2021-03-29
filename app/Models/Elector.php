@@ -9,7 +9,19 @@ use App\Models\Election;
 
 class Elector extends Model
 {
+    protected $fillable = [
+        'election_id',
+        'user_reg_id',
+        'name',
+        'email',
+        'joined_at',
+        'response_at'
+
+    ];
+
     use HasFactory;
+
+    public $timestamps = false;
 
     public function elections()
     {

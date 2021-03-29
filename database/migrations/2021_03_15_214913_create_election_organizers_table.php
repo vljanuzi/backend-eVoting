@@ -22,7 +22,7 @@ class CreateElectionOrganizersTable extends Migration
             $table->date('end_date');
             $table->integer('votes');
             $table->timestamps();
-            $table->foreign('user_reg_id')->references('id')->on('user_regs');
+            $table->foreign('user_reg_id')->references('id')->on('registered_users');
         });
     }
 

@@ -9,6 +9,16 @@ use App\Models\Election;
 
 class ElectionOrganizer extends Model
 {
+    protected $fillable = [
+        'user_reg_id',
+        'election_name',
+        'status',
+        'start_date',
+        'end_date',
+        'votes'
+    ];
+
+
     use HasFactory;
 
     public function elections()

@@ -21,9 +21,8 @@ class CreateElectorsTable extends Migration
             $table->string('email');
             $table->date('joined_at');
             $table->date('response_at');
-            $table->timestamps();
             $table->foreign('election_id')->references('id')->on('elections');
-            $table->foreign('user_reg_id')->references('id')->on('user_regs');
+            $table->foreign('user_reg_id')->references('id')->on('registered_users');
         });
     }
 
