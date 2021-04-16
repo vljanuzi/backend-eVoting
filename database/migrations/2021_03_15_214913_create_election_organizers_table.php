@@ -20,7 +20,7 @@ class CreateElectionOrganizersTable extends Migration
             $table->string('status');
             $table->date('start_date');
             $table->date('end_date');
-            $table->integer('votes');
+            $table->integer('votes')->default(0);
             $table->timestamps();
             $table->foreign('user_reg_id')->references('id')->on('registered_users');
         });

@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Election;
 use App\Models\Option;
+use App\Models\Response;
 
 class Question extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'election_id',
         'title',
@@ -19,7 +22,7 @@ class Question extends Model
     ];
 
 
-    use HasFactory;
+
 
     public function elections()
     {
@@ -28,5 +31,10 @@ class Question extends Model
     public function options()
     {
         return $this->hasMany(Option::class, 'question_id');
+    }
+
+    public function responses()
+    {
+        return $this->hasMany(Response::class, 'question_id');
     }
 }

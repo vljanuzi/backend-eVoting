@@ -7,19 +7,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Election;
 
+
 class ElectionOrganizer extends Model
 {
+    use HasFactory;
+
+
     protected $fillable = [
         'user_reg_id',
         'election_name',
         'status',
         'start_date',
         'end_date',
-        'votes'
     ];
 
 
-    use HasFactory;
+
 
     public function elections()
     {

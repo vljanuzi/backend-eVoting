@@ -25,12 +25,12 @@ class ElectionController extends Controller
      */
     public function store(Request $request)
     {
-        // $Elections = new Election();
-        // $Elections->elect_org_id = $request->input('elect_org_id');
-        // $Elections->name = $request->input('name');
-        // $Elections->save();
-        // return response()->json(['message' => 'Election registered successfully'], 200);
+        $request->validate([
+            'elect_org_id' => ['required', 'integer'],
+            'name' => ['required', 'string']
+        ]);
         return Election::create($request->all());
+        // $election->participants()->attach($election);
     }
 
     /**

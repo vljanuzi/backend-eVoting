@@ -6,20 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Question;
 
-class Option extends Model
+class Response extends Model
 {
     use HasFactory;
 
-
     protected $fillable = [
         'question_id',
-        'name',
-        'type',
+        'elector_id',
+        'option_id'
     ];
 
-
-
-    public function options()
+    public function responses()
     {
         return $this->belongsTo(Question::class, 'question_id');
     }

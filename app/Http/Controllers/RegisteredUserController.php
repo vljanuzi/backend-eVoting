@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\RegisteredUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class RegisteredUserController extends Controller
 {
@@ -25,8 +26,22 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = request()->validate([
+            'f_name' => ['required', 'string'],
+            'l_name' => ['required', 'string'],
+            'email' => ['required', 'unique:registered_users', 'max:255'],
+            'password' => ['required', 'string'],
+            'gender' => ['required', 'string'],
+            'birthday' => ['required', 'date'],
+            'user_privilege' => ['required', 'string'],
+            'role' => ['required', 'string']
+        ]);
+        $validated['password'] = Hash::make($validated['password']);
+
         return RegisteredUser::create($request->all());
     }
+
+
 
     /**
      * Display the specified resource.

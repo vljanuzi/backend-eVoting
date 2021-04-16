@@ -9,6 +9,8 @@ use App\Models\Election;
 
 class Elector extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'election_id',
         'user_reg_id',
@@ -19,7 +21,7 @@ class Elector extends Model
 
     ];
 
-    use HasFactory;
+
 
     public $timestamps = false;
 

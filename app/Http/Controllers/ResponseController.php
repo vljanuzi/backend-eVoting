@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Response;
 use Illuminate\Http\Request;
-use App\Models\Question;
 
-class QuestionController extends Controller
+class ResponseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        return Question::all();
+        return Response::all();
     }
 
     /**
@@ -25,15 +25,7 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'election_id' => ['required', 'integer'],
-            'title' => ['required', 'string'],
-            'image' => ['required', 'string'],
-            'type' => ['required', 'string'],
-            'allow_abstain' => ['required', 'boolean'],
-            'has_instructions' => ['required', 'boolean']
-        ]);
-        return Question::create($request->all());
+        return Response::create($request->all());
     }
 
     /**
@@ -44,7 +36,7 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        return Question::find($id);
+        return Response::find($id);
     }
 
     /**
@@ -56,9 +48,9 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $question = Question::find($id);
-        $question->update($request->all());
-        return $question;
+        $response = Response::find($id);
+        $response->update($request->all());
+        return $response;
     }
 
     /**
@@ -69,6 +61,6 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        return Question::destroy($id);
+        return Response::destroy($id);
     }
 }

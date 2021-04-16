@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Participant;
 use Illuminate\Http\Request;
-use App\Models\Question;
 
-class QuestionController extends Controller
+class ParticipantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        return Question::all();
+        return Participant::all();
     }
 
     /**
@@ -26,14 +26,10 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'election_id' => ['required', 'integer'],
-            'title' => ['required', 'string'],
-            'image' => ['required', 'string'],
-            'type' => ['required', 'string'],
-            'allow_abstain' => ['required', 'boolean'],
-            'has_instructions' => ['required', 'boolean']
+            'email' => ['required', 'unique:participants', 'max:255']
         ]);
-        return Question::create($request->all());
+        return Participant::create($request->all());
+        // $participant->elections()->attach($participant);
     }
 
     /**
@@ -44,7 +40,7 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        return Question::find($id);
+        return Participant::find($id);
     }
 
     /**
@@ -56,9 +52,9 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $question = Question::find($id);
-        $question->update($request->all());
-        return $question;
+        $participant = Participant::find($id);
+        $participant->update($request->all());
+        return $participant;
     }
 
     /**
@@ -69,6 +65,6 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        return Question::destroy($id);
+        return Participant::destroy($id);
     }
 }

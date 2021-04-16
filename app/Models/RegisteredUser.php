@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisteredUser extends Model
 {
+    use HasFactory;
+
+
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = Hash::make($password);
@@ -26,7 +29,7 @@ class RegisteredUser extends Model
         'role'
     ];
 
-    use HasFactory;
+
 
 
     public function electionorganizers()
