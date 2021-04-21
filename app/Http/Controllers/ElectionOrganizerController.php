@@ -7,6 +7,7 @@ use App\Models\ElectionOrganizer;
 
 
 
+
 class ElectionOrganizerController extends Controller
 {
     /**
@@ -27,6 +28,14 @@ class ElectionOrganizerController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'user_id' => ['required', 'integer'],
+            'election_name' => ['required', 'string'],
+            'status' => ['required', 'string'],
+            'start_date' => ['required', 'after:yesterday'],
+            'end_date' => ['required', 'after:start_date'],
+        ]);
+
         return ElectionOrganizer::create($request->all());
     }
 

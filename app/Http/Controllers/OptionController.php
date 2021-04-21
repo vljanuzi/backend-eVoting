@@ -25,6 +25,11 @@ class OptionController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'question_id' => ['required', 'integer'],
+            'name' => ['required', 'string'],
+            'type' => ['required', 'string'],
+        ]);
         return Option::create($request->all());
     }
 

@@ -25,6 +25,14 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'election_id' => ['required', 'integer'],
+            'title' => ['required', 'string'],
+            'image' => ['required', 'string'],
+            'type' => ['required', 'string'],
+            'allow_abstain' => ['required', 'boolean'],
+            'has_instructions' => ['required', 'boolean']
+        ]);
         return Question::create($request->all());
     }
 

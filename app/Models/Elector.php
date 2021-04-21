@@ -6,12 +6,15 @@ use App\Http\Controllers\UserRegController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Election;
+use App\Models\User;
 
 class Elector extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'election_id',
-        'user_reg_id',
+        'user_id',
         'name',
         'email',
         'joined_at',
@@ -19,7 +22,7 @@ class Elector extends Model
 
     ];
 
-    use HasFactory;
+
 
     public $timestamps = false;
 
@@ -29,6 +32,6 @@ class Elector extends Model
     }
     public function electors()
     {
-        return $this->belongsTo(UserRegController::class, 'user_reg_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

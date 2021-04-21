@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Election;
 use App\Models\Participant;
+use Illuminate\Http\Request;
 
-class ElectionController extends Controller
+class ParticipantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class ElectionController extends Controller
      */
     public function index()
     {
-        return Election::all();
+        return Participant::all();
     }
 
     /**
@@ -27,10 +26,9 @@ class ElectionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'elect_org_id' => ['required', 'integer'],
-            'email' => ['required', 'string']
+            'email' => ['required', 'unique:participants', 'max:255']
         ]);
-        return Election::create($request->all());
+        return Participant::create($request->all());
     }
 
     /**
@@ -41,7 +39,7 @@ class ElectionController extends Controller
      */
     public function show($id)
     {
-        return Election::find($id);
+        return Participant::find($id);
     }
 
     /**
@@ -53,9 +51,9 @@ class ElectionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $election = Election::find($id);
-        $election->update($request->all());
-        return $election;
+        $participant = Participant::find($id);
+        $participant->update($request->all());
+        return $participant;
     }
 
     /**
@@ -66,6 +64,6 @@ class ElectionController extends Controller
      */
     public function destroy($id)
     {
-        return Election::destroy($id);
+        return Participant::destroy($id);
     }
 }

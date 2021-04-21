@@ -7,17 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\ElectionOrganizer;
 use App\Models\Question;
 use App\Models\Elector;
+use App\Models\Participant;
 
 
 class Election extends Model
 {
+    use HasFactory;
+
+
     protected $fillable = [
         'elect_org_id',
         'name'
     ];
 
 
-    use HasFactory;
+
 
     public function electionorganizers()
     {
@@ -32,5 +36,10 @@ class Election extends Model
     public function questions()
     {
         return $this->hasMany(Question::class, 'election_id');
+    }
+
+    public function participants()
+    {
+        return $this->belongsToMany(Participant::class, 'election_participants', 'election_id', 'participant_id')->withTimestamps();;
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RegisteredUser;
+use App\Models\Response;
 use Illuminate\Http\Request;
 
-class RegisteredUserController extends Controller
+class ResponseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class RegisteredUserController extends Controller
      */
     public function index()
     {
-        return RegisteredUser::all();
+        return Response::all();
     }
 
     /**
@@ -25,7 +25,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        return RegisteredUser::create($request->all());
+        return Response::create($request->all());
     }
 
     /**
@@ -36,7 +36,7 @@ class RegisteredUserController extends Controller
      */
     public function show($id)
     {
-        return RegisteredUser::find($id);
+        return Response::find($id);
     }
 
     /**
@@ -48,9 +48,9 @@ class RegisteredUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $reg_user = RegisteredUser::find($id);
-        $reg_user->update($request->all());
-        return $reg_user;
+        $response = Response::find($id);
+        $response->update($request->all());
+        return $response;
     }
 
     /**
@@ -61,6 +61,6 @@ class RegisteredUserController extends Controller
      */
     public function destroy($id)
     {
-        return RegisteredUser::destroy($id);
+        return Response::destroy($id);
     }
 }

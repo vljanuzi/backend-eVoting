@@ -25,6 +25,14 @@ class ElectorController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'election_id' => ['required', 'integer'],
+            'user_id' => ['required', 'integer'],
+            'name' => ['required', 'string'],
+            'email' => ['required', 'unique:electors', 'max:255'],
+            'joined_at' => ['required', 'date'],
+            'response_at' => ['required', 'date']
+        ]);
         return Elector::create($request->all());
     }
 

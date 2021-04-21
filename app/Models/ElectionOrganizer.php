@@ -2,24 +2,27 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\UserRegController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Election;
+use App\Models\User;
+
 
 class ElectionOrganizer extends Model
 {
+    use HasFactory;
+
+
     protected $fillable = [
-        'user_reg_id',
+        'user_id',
         'election_name',
         'status',
         'start_date',
         'end_date',
-        'votes'
     ];
 
 
-    use HasFactory;
+
 
     public function elections()
     {
@@ -27,6 +30,6 @@ class ElectionOrganizer extends Model
     }
     public function electionorganizers()
     {
-        return $this->belongsTo(UserRegController::class, 'user_reg_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
