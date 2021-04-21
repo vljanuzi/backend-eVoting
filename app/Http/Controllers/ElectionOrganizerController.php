@@ -29,7 +29,7 @@ class ElectionOrganizerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_reg_id' => ['required', 'integer'],
+            'user_id' => ['required', 'integer'],
             'election_name' => ['required', 'string'],
             'status' => ['required', 'string'],
             'start_date' => ['required', 'after:yesterday'],

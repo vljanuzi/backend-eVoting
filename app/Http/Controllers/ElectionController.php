@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Election;
+use App\Models\Participant;
 
 class ElectionController extends Controller
 {
@@ -27,10 +28,9 @@ class ElectionController extends Controller
     {
         $request->validate([
             'elect_org_id' => ['required', 'integer'],
-            'name' => ['required', 'string']
+            'email' => ['required', 'string']
         ]);
         return Election::create($request->all());
-        // $election->participants()->attach($election);
     }
 
     /**

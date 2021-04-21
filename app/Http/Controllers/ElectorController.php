@@ -27,7 +27,7 @@ class ElectorController extends Controller
     {
         $request->validate([
             'election_id' => ['required', 'integer'],
-            'user_reg_id' => ['required', 'integer'],
+            'user_id' => ['required', 'integer'],
             'name' => ['required', 'string'],
             'email' => ['required', 'unique:electors', 'max:255'],
             'joined_at' => ['required', 'date'],

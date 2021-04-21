@@ -16,13 +16,13 @@ class CreateElectorsTable extends Migration
         Schema::create('electors', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('election_id');
-            $table->unsignedBigInteger('user_reg_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('email');
             $table->date('joined_at');
             $table->date('response_at');
             $table->foreign('election_id')->references('id')->on('elections');
-            $table->foreign('user_reg_id')->references('id')->on('registered_users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

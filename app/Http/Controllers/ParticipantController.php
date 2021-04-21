@@ -29,7 +29,6 @@ class ParticipantController extends Controller
             'email' => ['required', 'unique:participants', 'max:255']
         ]);
         return Participant::create($request->all());
-        // $participant->elections()->attach($participant);
     }
 
     /**
