@@ -26,11 +26,14 @@ class ElectionController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'elect_org_id' => ['required', 'integer'],
             'email' => ['required', 'string']
         ]);
-        return Election::create($request->all());
+        $election = Election::find($data['elect_org_id']);
+        $participant = Participant::where('email', $data['email'])->get();
+        $election->participants()->attach($participant[0]->id);
+        return $participant;
     }
 
     /**
